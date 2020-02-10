@@ -16,8 +16,7 @@ class App extends React.Component {
       user: {
         id: '',
         name: '',
-        email: '',
-        occupation: ''
+        email: ''
       }
     }
   }
@@ -27,8 +26,7 @@ class App extends React.Component {
       user: {
         id: user.id,
         name: user.name,
-        email: user.email,
-        occupation: user.occupation
+        email: user.email
       }
     })
   }
@@ -59,10 +57,10 @@ class App extends React.Component {
           onRouteChange={this.onRouteChange} />
         {
           this.state.route === 'Signin'
-            ? <Signin onRouteChange={this.onRouteChange} />
+            ? <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
             : (
               this.state.route === 'Register'
-                ? <Register />
+                ? <Register onRouteChange={this.onRouteChange} />
                 : (
                   this.state.route === 'AdminRegistration'
                     ? <AdminRegistration />
@@ -70,7 +68,6 @@ class App extends React.Component {
                 )
             )
         }
-        {/* <Logo /> */}
       </div>
     );
   }

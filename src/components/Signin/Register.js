@@ -36,11 +36,11 @@ class Register extends React.Component {
             .then(user => {
                 if (user.id) {
                     alert("successfully register")
+                    this.props.onRouteChange('Signin');
                 } else {
                     alert("failed register")
                 }
             })
-        this.props.onRouteChange('Signin');
     }
 
     render() {
@@ -77,7 +77,7 @@ class Register extends React.Component {
                                     onChange={this.onPasswordChange}
                                 />
                             </div>
-                            <div className="mv3">
+                            {/* <div className="mv3">
                                 <label className="db fw6 lh-copy f6" htmlFor="password">Occupation</label>
                                 <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                                     type="text"
@@ -85,7 +85,7 @@ class Register extends React.Component {
                                     id="text"
                                     onChange={this.onOccupationChange}
                                 />
-                            </div>
+                            </div> */}
                         </fieldset>
                         <div className="">
                             <input

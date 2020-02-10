@@ -51,10 +51,10 @@ class AdminRegistration extends React.Component {
                                                 <td className="pa3">{this.state.users[i].email}</td>
 
                                                 <td
-                                                    onClick={}
+                                                    // onClick={}
                                                     className='f5 link dim black underline pa3 pointer'>Approve</td>
                                                 <td
-                                                    onClick={}
+                                                    // onClick={}
                                                     className='f5 link dim black underline pa3 pointer'>Deny</td>
 
                                             </tr>
