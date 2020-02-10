@@ -4,6 +4,7 @@ import Navigation from './components/Navigation/Navigation';
 import Signin from './components/Signin/Signin';
 import Register from './components/Signin/Register';
 import AdminRegistration from './components/Admin/AdminRegistration';
+import UserPage from './components/User/UserPage';
 import './App.css';
 
 class App extends React.Component {
@@ -57,14 +58,18 @@ class App extends React.Component {
           onRouteChange={this.onRouteChange} />
         {
           this.state.route === 'Signin'
-            ? <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
+            ? <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser} getDBUsers={this.getDBUsers} />
             : (
               this.state.route === 'Register'
                 ? <Register onRouteChange={this.onRouteChange} />
                 : (
                   this.state.route === 'AdminRegistration'
-                    ? <AdminRegistration />
-                    : <Signin />
+                    ? <AdminRegistration getUsers={this.state.users} />
+                    : (
+                      this.state.route === 'UserPage'
+                        ? <UserPage name={this.state.user.name} />
+                        : <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser} getDBUsers={this.getDBUsers} />
+                    )
                 )
             )
         }

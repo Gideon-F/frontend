@@ -19,6 +19,16 @@ class Signin extends React.Component {
     }
 
     onSubmitSignIn = () => {
+        fetch('http://localhost:3000/adminRegistration')
+            .then(response => response.json())
+            .then(users => {
+                if (users.length) {
+                    this.props.getDBUsers(users)
+                } else {
+                    alert("NO users in list")
+                }
+            });
+
         fetch('http://localhost:3000/signin', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
@@ -31,12 +41,15 @@ class Signin extends React.Component {
             .then(user => {
                 if (user.id) {
                     this.props.loadUser(user)
-                    this.props.onRouteChange('AdminRegistration');
+                    if (user.name === 'admin') {
+                        this.props.onRouteChange('AdminRegistration');
+                    } else {
+                        this.props.onRouteChange('UserPage');
+                    }
                 } else {
                     alert("wrong password")
                 }
             });
-
     }
 
     render() {
